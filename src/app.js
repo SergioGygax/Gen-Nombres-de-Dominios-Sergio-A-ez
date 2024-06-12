@@ -1,11 +1,26 @@
-/* eslint-disable */
-import "bootstrap";
-import "./style.css";
+let pronoun = ["the", "our"];
+let adj = ["great", "big"];
+let noun = ["jogger", "racoon"];
+let domain = [".com", ".net", ".es", ".org"];
+const domainContainer = document.querySelector(".domain-list");
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+function getRandomDomain() {
+  let randomDomainsArr = [];
+  for (let pronouns of pronoun) {
+    let randomDomain = "";
+    for (let adjs of adj) {
+      for (let nouns of noun) {
+        for (let domains of domain) {
+          randomDomain = `${pronouns}${adjs}${nouns}${domains}`;
+          if (randomDomainsArr.length === 0) {
+            randomDomainsArr.push(randomDomain);
+          } else randomDomainsArr.push("<br>" + randomDomain);
+        }
+      }
+    }
+  }
+  return randomDomainsArr;
+}
+domainContainer.innerHTML = getRandomDomain();
 
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
-};
+console.log(getRandomDomain());
